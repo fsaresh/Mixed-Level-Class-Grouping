@@ -17,7 +17,7 @@ def load_levels_data_from_file(mode: LevelType, level_ranges: List[ReadingLevelR
 
 
 def load_levels_from_data_reader(data_reader, level_ranges: List[ReadingLevelRange]):
-    levels_data = []
+    student_levels_data = []
     is_first_row = True
 
     for entry in data_reader:
@@ -41,8 +41,8 @@ def load_levels_from_data_reader(data_reader, level_ranges: List[ReadingLevelRan
                     reading_level=reading_level,
                     reading_level_range_id=student_reading_range
                 )
-                levels_data.append(student)
+                student_levels_data.append(student)
                 level_ranges[levels_range_counter].students.append(student)
                 break
 
-    return levels_data
+    return student_levels_data
