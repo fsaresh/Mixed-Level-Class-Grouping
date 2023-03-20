@@ -1,8 +1,8 @@
 import csv
 from typing import List
-from helpers.base_models import InvalidLevelTypeMode
-from helpers.student_models import Student
-from helpers.level_models import StudentLevel, LevelRange, LevelType
+from models.base import InvalidLevelTypeMode, StudentLevel
+from models.student import Student
+from models.level import LevelRange, LevelType
 
 
 def load_levels_data_from_file(mode: LevelType, level_ranges: List[LevelRange]) -> List[Student]:

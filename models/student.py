@@ -1,7 +1,7 @@
 import uuid
 from enum import Enum
 from typing import List
-from helpers.level_models import StudentLevel
+from models.base import StudentLevel
 
 
 class Gender(Enum):

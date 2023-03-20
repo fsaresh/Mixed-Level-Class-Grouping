@@ -1,6 +1,7 @@
 from enum import auto, Enum
 from typing import List
-from helpers.base_models import StudentLevel
+
+from models.base import StudentLevel
 
 
 class LevelType(Enum):

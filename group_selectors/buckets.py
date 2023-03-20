@@ -1,6 +1,6 @@
-from helpers.base_models import GroupMismatchCountError, GroupMismatchGenderError, GroupMismatchLevelsError
-from helpers.student_models import StudentGroup, Student
-from helpers.level_models import LevelRange
+from models.base import GroupMismatchCountError, GroupMismatchGenderError, GroupMismatchLevelsError
+from models.student import StudentGroup, Student
+from models.level import LevelRange
 from typing import List
 
 

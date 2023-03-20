@@ -1,6 +1,7 @@
 from group_selectors.buckets import BucketGroupMaker
 from helpers.file_reader import load_levels_data_from_file
-from helpers.level_models import StudentLevel, LevelRange, LevelType
+from models.level import LevelRange, LevelType
+from models.base import StudentLevel
 
 
 def main():
