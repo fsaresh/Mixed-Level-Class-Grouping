@@ -37,9 +37,9 @@ class BucketGroupMaker:
     def assign_students_by_level_and_gender(self, groups: List[StudentGroup]):
         while self.students:
             student = self.students.pop()
-            best_group = groups[0]
+            best_group = groups[-1]
             for group in groups:
-                if group.students_at_level(student.level) > best_group.students_at_level(student.level):
+                if group.students_at_level_range(student.level_range_id) > best_group.students_at_level_range(student.level_range_id):
                     continue
                 if group.gender_counter(student.gender) > best_group.gender_counter(student.gender):
                     continue

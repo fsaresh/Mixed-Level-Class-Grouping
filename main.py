@@ -29,7 +29,7 @@ def print_groups(groups):
         group_counter += 1
         print(f'Group #{group_counter}: ')
         for student in group.students:
-            print(f'- {student.raw_reading_level}, {student.name}')
+            print(f'- {student.raw_reading_level}, {student.level_range_id}, {student.name}')
 
 
 if __name__ == '__main__':
