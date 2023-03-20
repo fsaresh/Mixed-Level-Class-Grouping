@@ -1,11 +1,13 @@
 import csv
 from typing import List
-from helpers.models import InvalidLevelTypeMode, LevelType, ReadingLevel, ReadingLevelRange, Student
+from helpers.base_models import InvalidLevelTypeMode
+from helpers.student_models import Student
+from helpers.level_models import StudentLevel, LevelRange, LevelType
 
 
-def load_levels_data_from_file(mode: LevelType, level_ranges: List[ReadingLevelRange]) -> List[Student]:
+def load_levels_data_from_file(mode: LevelType, level_ranges: List[LevelRange]) -> List[Student]:
     if mode is LevelType.READING:
-        file = 'data_fixtures/reading_levels_data.csv'
+        file = 'data_fixtures/levels_data.csv'
     elif mode is LevelType.MATH:
         file = 'data_fixtures/math_levels_data.csv'
     else:
@@ -16,7 +18,7 @@ def load_levels_data_from_file(mode: LevelType, level_ranges: List[ReadingLevelR
         return load_levels_from_data_reader(data_reader, level_ranges)
 
 
-def load_levels_from_data_reader(data_reader, level_ranges: List[ReadingLevelRange]):
+def load_levels_from_data_reader(data_reader, level_ranges: List[LevelRange]):
     student_levels_data = []
     is_first_row = True
 
@@ -27,19 +29,20 @@ def load_levels_from_data_reader(data_reader, level_ranges: List[ReadingLevelRan
             continue
 
         # Identify current student as basis
-        name, reading_level = entry
+        name, reading_level, gender = entry
 
         # We need to find which reading level range the reading level is in
         for levels_range_counter in range(len(level_ranges)):
             range_start = level_ranges[levels_range_counter].start
             range_end = level_ranges[levels_range_counter].end
-            if range_start <= ReadingLevel[reading_level] <= range_end:
+            if range_start <= StudentLevel[reading_level] <= range_end:
                 # Create student entry with name, reading level, and which reading range they're in
                 student_reading_range = levels_range_counter
                 student = Student(
                     name=name,
                     reading_level=reading_level,
-                    reading_level_range_id=student_reading_range
+                    reading_level_range_id=student_reading_range,
+                    gender=gender
                 )
                 student_levels_data.append(student)
                 level_ranges[levels_range_counter].students.append(student)

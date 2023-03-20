@@ -1,18 +1,18 @@
 from group_selectors.buckets import BucketGroupMaker
 from helpers.file_reader import load_levels_data_from_file
-from helpers.models import LevelType, ReadingLevel, ReadingLevelRange
+from helpers.level_models import StudentLevel, LevelRange, LevelType
 
 
 def main():
     group_count = 6
     level_ranges = [
-        ReadingLevelRange(start=ReadingLevel.A, end=ReadingLevel.I),
-        ReadingLevelRange(start=ReadingLevel.J, end=ReadingLevel.L),
-        ReadingLevelRange(start=ReadingLevel.M, end=ReadingLevel.O),
-        ReadingLevelRange(start=ReadingLevel.P, end=ReadingLevel.Z),
+        LevelRange(start=StudentLevel.A, end=StudentLevel.I),
+        LevelRange(start=StudentLevel.J, end=StudentLevel.L),
+        LevelRange(start=StudentLevel.M, end=StudentLevel.O),
+        LevelRange(start=StudentLevel.P, end=StudentLevel.Z),
     ]
 
-    student_levels_data = load_levels_data_from_file(mode=LevelType.READING, level_ranges=ranges)
+    student_levels_data = load_levels_data_from_file(mode=LevelType.READING, level_ranges=level_ranges)
     bucket_group_maker = BucketGroupMaker(
         student_levels_data=student_levels_data,
         level_ranges=level_ranges,
