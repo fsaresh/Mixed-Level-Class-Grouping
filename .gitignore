@@ -3,6 +3,9 @@
 # Learn more about .gitignore:
 #     https://www.atlassian.com/git/tutorials/saving-changes/gitignore
 
+# Real data fixtures
+data_fixtures/*.csv
+
 # Node artifact files
 node_modules/
 dist/
