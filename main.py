@@ -1,11 +1,11 @@
 from group_selectors.buckets import BucketGroupMaker
+from helpers.constants import NUMBER_OF_GROUPS
 from helpers.file_reader import load_levels_data_from_file
 from models.level import LevelRange, LevelType
 from models.base import StudentLevel
 
 
 def main():
-    group_count = 6
     level_ranges = [
         LevelRange(start=StudentLevel.A, end=StudentLevel.I),
         LevelRange(start=StudentLevel.J, end=StudentLevel.L),
@@ -17,7 +17,7 @@ def main():
     bucket_group_maker = BucketGroupMaker(
         student_levels_data=student_levels_data,
         level_ranges=level_ranges,
-        group_count=group_count
+        group_count=NUMBER_OF_GROUPS
     )
     groups = bucket_group_maker.group_maker()
     print_groups(groups)
